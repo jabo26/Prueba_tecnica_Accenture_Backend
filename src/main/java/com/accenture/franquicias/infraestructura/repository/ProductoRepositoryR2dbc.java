@@ -19,7 +19,14 @@ public interface ProductoRepositoryR2dbc extends R2dbcRepository<Producto, Long>
     Mono<Boolean> existsByNombreAndSucursalIdAndIdNot(String nombre, Long sucursalId, Long id);
     
     @Query("""
-       pendiente
+        SELECT p.* FROM productos p
+        INNER JOIN (
+            SELECT p2.sucursal_id, MAX(p2.stock) as max_stock
+            FROM productos p2
+            INNER JOIN sucursales s ON p2.sucursal_id = s.id
+            WHERE s.franquicia_id = :franquiciaId
+            GROUP BY p2.sucursal_id
+        ) max_p ON p.sucursal_id = max_p.sucursal_id AND p.stock = max_p.max_stock
         """)
     Flux<Producto> findTopStockBySucursalInFranquicia(Long franquiciaId);
 }
