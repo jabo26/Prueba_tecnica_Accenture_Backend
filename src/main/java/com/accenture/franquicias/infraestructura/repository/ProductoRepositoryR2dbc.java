@@ -12,11 +12,11 @@ public interface ProductoRepositoryR2dbc extends R2dbcRepository<Producto, Long>
     
     Flux<Producto> findBySucursalId(Long sucursalId);
     
-    @Query("SELECT COUNT(*) > 0 FROM productos WHERE nombre = :nombre AND sucursal_id = :sucursalId")
-    Mono<Boolean> existsByNombreAndSucursalId(String nombre, Long sucursalId);
+    @Query("SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM productos WHERE nombre = :nombre AND sucursal_id = :sucursalId")
+    Mono<Integer> existsByNombreAndSucursalId(String nombre, Long sucursalId);
     
-    @Query("SELECT COUNT(*) > 0 FROM productos WHERE nombre = :nombre AND sucursal_id = :sucursalId AND id != :id")
-    Mono<Boolean> existsByNombreAndSucursalIdAndIdNot(String nombre, Long sucursalId, Long id);
+    @Query("SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM productos WHERE nombre = :nombre AND sucursal_id = :sucursalId AND id != :id")
+    Mono<Integer> existsByNombreAndSucursalIdAndIdNot(String nombre, Long sucursalId, Long id);
     
     @Query("""
         SELECT p.* FROM productos p

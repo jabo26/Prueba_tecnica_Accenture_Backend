@@ -28,7 +28,7 @@ public class ProductoService {
             .flatMap(sucursal -> 
                 repository.existsByNombreAndSucursalId(request.getNombre(), request.getSucursalId())
                     .flatMap(existe -> {
-                        if (Boolean.TRUE.equals(existe)) {
+                        if (existe > 0) {
                             return Mono.<Producto>error(new NombreDuplicadoException("Producto", request.getNombre()));
                         }
                         
@@ -52,7 +52,7 @@ public class ProductoService {
             .flatMap(producto -> 
                 repository.existsByNombreAndSucursalIdAndIdNot(request.getNombre(), producto.getSucursalId(), id)
                     .flatMap(existe -> {
-                        if (Boolean.TRUE.equals(existe)) {
+                        if (existe > 0) {
                             return Mono.<Producto>error(new NombreDuplicadoException("Producto", request.getNombre()));
                         }
                         

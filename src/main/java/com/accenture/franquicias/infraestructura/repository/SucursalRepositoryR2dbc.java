@@ -12,9 +12,9 @@ public interface SucursalRepositoryR2dbc extends R2dbcRepository<Sucursal, Long>
     
     Flux<Sucursal> findByFranquiciaId(Long franquiciaId);
     
-    @Query("SELECT COUNT(*) > 0 FROM sucursales WHERE nombre = :nombre AND franquicia_id = :franquiciaId")
-    Mono<Boolean> existsByNombreAndFranquiciaId(String nombre, Long franquiciaId);
+    @Query("SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM sucursales WHERE nombre = :nombre AND franquicia_id = :franquiciaId")
+    Mono<Integer> existsByNombreAndFranquiciaId(String nombre, Long franquiciaId);
     
-    @Query("SELECT COUNT(*) > 0 FROM sucursales WHERE nombre = :nombre AND franquicia_id = :franquiciaId AND id != :id")
-    Mono<Boolean> existsByNombreAndFranquiciaIdAndIdNot(String nombre, Long franquiciaId, Long id);
+    @Query("SELECT CASE WHEN COUNT(*) > 0 THEN 1 ELSE 0 END FROM sucursales WHERE nombre = :nombre AND franquicia_id = :franquiciaId AND id != :id")
+    Mono<Integer> existsByNombreAndFranquiciaIdAndIdNot(String nombre, Long franquiciaId, Long id);
 }

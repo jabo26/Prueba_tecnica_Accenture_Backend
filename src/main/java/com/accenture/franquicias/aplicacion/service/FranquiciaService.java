@@ -23,7 +23,7 @@ public class FranquiciaService {
     public Mono<FranquiciaResponse> crear(FranquiciaRequest request) {
         return repository.existsByNombre(request.getNombre())
             .flatMap(existe -> {
-                if (Boolean.TRUE.equals(existe)) {
+                if (existe > 0) {
                     return Mono.<Franquicia>error(new NombreDuplicadoException("Franquicia", request.getNombre()));
                 }
                 
@@ -44,7 +44,7 @@ public class FranquiciaService {
             .flatMap(franquicia -> 
                 repository.existsByNombreAndIdNot(request.getNombre(), id)
                     .flatMap(existe -> {
-                        if (Boolean.TRUE.equals(existe)) {
+                        if (existe > 0) {
                             return Mono.<Franquicia>error(new NombreDuplicadoException("Franquicia", request.getNombre()));
                         }
                         
