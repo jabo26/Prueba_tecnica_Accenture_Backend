@@ -1,0 +1,7 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "mvn clean package -DskipTests && java -jar target/franquicias-api-1.0.0.jar"
+healthcheckPath = "/api/franquicias"
+healthcheckTimeout = 100
