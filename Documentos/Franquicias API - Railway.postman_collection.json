@@ -1,0 +1,533 @@
+{
+  "info": {
+    "_postman_id": "d40fe1f4-8af1-4078-8b00-ece7bd15a8a5",
+    "name": "Franquicias API - Railway",
+    "description": "Colección de pruebas para la API de franquicias desplegada en Railway",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26030360"
+  },
+  "item": [
+    {
+      "name": "Franquicias",
+      "item": [
+        {
+          "name": "Crear Franquicia",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"McDonald's\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/franquicias",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "franquicias"
+              ]
+            },
+            "description": "Crea una nueva franquicia con nombre único a nivel global"
+          },
+          "response": []
+        },
+        {
+          "name": "Crear Franquicia - Burger King",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Burger King\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/franquicias",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "franquicias"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Todas las Franquicias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/franquicias",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "franquicias"
+              ]
+            },
+            "description": "Obtiene un listado de todas las franquicias registradas"
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Franquicia por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/franquicias/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "franquicias",
+                "1"
+              ]
+            },
+            "description": "Obtiene una franquicia específica por su ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Nombre Franquicia",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"McDonald's Colombia\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/franquicias/1/nombre",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "franquicias",
+                "1",
+                "nombre"
+              ]
+            },
+            "description": "Actualiza el nombre de una franquicia existente"
+          },
+          "response": []
+        },
+        {
+          "name": "Crear Franquicia Duplicada (Error 409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"McDonald's\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/franquicias",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "franquicias"
+              ]
+            },
+            "description": "Intenta crear una franquicia con nombre duplicado (debe fallar con 409)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sucursales",
+      "item": [
+        {
+          "name": "Crear Sucursal",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sucursal Centro\",\n  \"franquiciaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/sucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "sucursales"
+              ]
+            },
+            "description": "Crea una sucursal asociada a una franquicia"
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Sucursales por Franquicia",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/sucursales/franquicia/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "sucursales",
+                "franquicia",
+                "1"
+              ]
+            },
+            "description": "Obtiene todas las sucursales de una franquicia específica"
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Todas las Sucursales",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/sucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "sucursales"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Sucursal por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/sucursales/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "sucursales",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Nombre Sucursal",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sucursal Centro Histórico\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/sucursales/1/nombre",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "sucursales",
+                "1",
+                "nombre"
+              ]
+            },
+            "description": "Actualiza el nombre de una sucursal"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "Crear Producto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Big Mac\",\n  \"stock\": 50,\n  \"sucursalId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/productos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos"
+              ]
+            },
+            "description": "Crea un producto en una sucursal específica"
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Productos por Sucursal",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/sucursal/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "sucursal",
+                "1"
+              ]
+            },
+            "description": "Obtiene todos los productos de una sucursal"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Stock Producto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stock\": 75\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/productos/1/stock",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "1",
+                "stock"
+              ]
+            },
+            "description": "Modifica la cantidad de stock de un producto"
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar Nombre Producto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Big Mac Deluxe\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/productos/1/nombre",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "1",
+                "nombre"
+              ]
+            },
+            "description": "Actualiza el nombre de un producto"
+          },
+          "response": []
+        },
+        {
+          "name": "Productos con Mayor Stock por Franquicia",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/mas-stock/franquicia/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "mas-stock",
+                "franquicia",
+                "1"
+              ]
+            },
+            "description": "Endpoint principal: Obtiene el producto con mayor stock de cada sucursal dentro de una franquicia"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar Producto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/productos/2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos",
+                "2"
+              ]
+            },
+            "description": "Elimina un producto del sistema"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pruebas de Validación",
+      "item": [
+        {
+          "name": "Crear Producto sin Nombre (Error 400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stock\": 10,\n  \"sucursalId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/productos",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "productos"
+              ]
+            },
+            "description": "Prueba validación de campos requeridos"
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Franquicia Inexistente (Error 404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/franquicias/999",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "franquicias",
+                "999"
+              ]
+            },
+            "description": "Prueba manejo de entidades no encontradas"
+          },
+          "response": []
+        },
+        {
+          "name": "Crear Sucursal Duplicada (Error 409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sucursal Centro\",\n  \"franquiciaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/sucursales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "sucursales"
+              ]
+            },
+            "description": "Prueba validación de unicidad de nombres"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://pruebatecnicaaccenturebackend-production.up.railway.app",
+      "type": "string"
+    }
+  ]
+}
