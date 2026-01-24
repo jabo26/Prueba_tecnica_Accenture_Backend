@@ -400,6 +400,19 @@ Las validaciones de nombres únicos se implementan a nivel de aplicación y base
 - La red privada de Railway requiere servicios en el mismo proyecto
 - R2DBC tiene soporte limitado para algunas operaciones avanzadas de MySQL
 
+## Pruebas Unitarias
+
+El proyecto incluye pruebas unitarias para los servicios principales, cubriendo:
+- Validación de nombres únicos (franquicias, sucursales, productos)
+- Manejo de entidades no encontradas
+- Creación, actualización y eliminación de recursos
+- Lógica de negocio crítica
+
+Ejecutar pruebas:
+```bash
+mvn test
+
+
 
 ## Autor
 
